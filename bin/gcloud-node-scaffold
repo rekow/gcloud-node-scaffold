@@ -63,7 +63,6 @@ var path = require('path'),
 
     console.log('About to scaffold project "%s" into %s, continue? (y/n)', args.project, args.directory);
     prompt(function (confirm) {
-      console.log('confirm: "%s"', confirm);
       if (confirm && confirm.toLowerCase() !== 'y' ) {
         console.log('Project scaffolding canceled. Exiting.');
         process.exit();
@@ -80,7 +79,7 @@ var path = require('path'),
         'streams',
         'views',
         '.dockerignore',
-        'gitignore',
+        'gitignore',      // NPM renames '.gitignore' files to '.npmignore' to allow checking in 'node_modules'
         'app.js',
         'Dockerfile',
         'LICENSE',

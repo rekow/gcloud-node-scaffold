@@ -24,6 +24,8 @@ the `project-id` positional arg is equivalent to `--project`. if both are provid
 
 the tool will prompt for any required values not provided.
 
+once scaffold is finished, run with `npm start` and visit `http://localhost:8080` to see the default landing page.
+
 ## scaffold
 
 the following files will be populated, using user-provided values (see [the src folder](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/) to explore in more detail):
@@ -70,3 +72,7 @@ the following files will be populated, using user-provided values (see [the src 
           └── static
               └── 404.t
 
+## stack
+- [pure]() css grid & basic styles
+- [t+](https://github.com/davidrekow/t) for isomorphic templating (new repo coming soon).
+- take a look at the [package.json](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/package.json) for any other dependencies.
