@@ -24,7 +24,16 @@ the `project-id` positional arg is equivalent to `--project`. if both are provid
 
 the tool will prompt for any required values not provided.
 
-once scaffold is finished, run with `npm start` and visit `http://localhost:8080` to see the default landing page.
+## running the app
+
+once scaffold is finished, `cd` to the project directory and run `npm install` to install dependencies. then run with `npm start` and visit `http://localhost:8080` to see the default landing page.
+
+## configuration
+
+By default, sessions and OAuth2 are disabled pending configuration:
+
+- to enable OAuth set the correct values for [`clientId`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L6) and [`clientSecret`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L7) properties, then uncomment the [OAuth2 middleware init](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/app.js#L33)
+- to enable sessions set the value of [`sessionSecret`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L8), then uncomment the [session middleware init](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/app.js#L33)
 
 ## scaffold
 

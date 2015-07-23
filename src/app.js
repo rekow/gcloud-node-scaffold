@@ -28,19 +28,23 @@ app.use(express.static(path.join(__dirname, 'assets')));
 app.use('/js/lib', express.static(path.join(__dirname, 'lib/shared')));
 
 // Configure cookie-based sessions
-app.use(session({
-  secret: config.secret,
-  signed: true
-}));
+// To use, set the session secret in `sensitive.js`, then uncomment here.
+//
+// app.use(session({
+//   secret: config.secret,
+//   signed: true
+// }));
 
 // Set up default app engine checks
 app.use(require('./lib/appengine'));
 
 // Set up OAuth2
-var oauth2 = require('./lib/oauth2')(config.oauth2);
-app.use(oauth2.router);
-app.use(oauth2.authorize);
-app.use(oauth2.template);
+// To use, set the client ID and secret in `sensitive.js`, then uncomment here.
+// 
+// var oauth2 = require('./lib/oauth2')(config.oauth2);
+// app.use(oauth2.router);
+// app.use(oauth2.authorize);
+// app.use(oauth2.template);
 
 // Expose top-level site nav in templates
 app.use(function (req, res, next) {

@@ -1,6 +1,6 @@
 {
   "name": "gcloud-node-scaffold",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple scaffold utility for node projects on Google Cloud Platform. Super in-progress.",
   "author": {
     "name": "David Rekow",

@@ -7,7 +7,7 @@ var path = require('path'),
 
 module.exports = {
   // Project version.
-  version: '#{VERSION}'
+  version: '#{VERSION}',
 
   // Port to serve on.
   port: '8080',
