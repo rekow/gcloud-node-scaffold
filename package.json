@@ -1,0 +1,26 @@
+{
+  "name": "gcloud-node-scaffold",
+  "version": "0.1.0",
+  "description": "Simple scaffold utility for node projects on Google Cloud Platform. Super in-progress.",
+  "author": {
+    "name": "David Rekow",
+    "email": "d@davidrekow.com",
+    "url": "http://github.com/davidrekow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidrekow/gcloud-node-scaffold.git"
+  },
+  "bugs": "https://github.com/davidrekow/gcloud-node-scaffold/issues",
+  "license": "MIT",
+  "scripts": {
+    "install": "./scripts/install",
+    "uninstall": "./scripts/uninstall"
+  },
+  "bin": {
+    "gcloud-node-scaffold": "bin/gcloud-node-scaffold"
+  },
+  "dependencies": {
+    "minimist": "^1.1.0"
+  }
+}

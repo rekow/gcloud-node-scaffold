@@ -1,0 +1,130 @@
+#!/usr/bin/env node
+// Initializes a new project.
+
+var path = require('path'),
+  fs = require('fs'),
+  sourcedir = '/usr/local/var/gcloud-node-scaffold',
+  args = require('minimist')(process.argv.slice(2)),
+
+  copy = function (src, dest) {
+    var file = fs.existsSync(src) && fs.statSync(src);
+
+    if (!file) {
+      console.error('Source directory %s doesn\'t exist. Exiting.', src);
+      process.exit();
+    }
+
+    if (file.isDirectory()) {
+      fs.mkdirSync(dest);
+      fs.readdirSync(src).forEach(function (child) {
+        copy(path.join(src, child), path.join(dest, child));
+      });
+    } else {
+      fs.linkSync(src, dest);
+    }
+  },
+
+  prompt = function (cb) {
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+    process.stdin.once('data', function (input) {
+      process.stdin.pause();
+      cb(input.toString().replace(/^[\n\r\s\t]/g, '').replace(/[\n\r\s\t]$/g, ''));
+    });
+  },
+
+  scaffold = function () {
+    args.project = args._.shift() || args.project || args.p;
+
+    if (!args.project) {
+      console.log('Enter project id (found in Google Developers Console):');
+      return prompt(function (project) {
+        args.project = project;
+        scaffold();
+      });
+    }
+
+    args.author = args.author || args.a;
+
+    if (!args.author) {
+      console.log('Enter author information (i.e. "David Rekow <d@davidrekow.com>"):');
+      return prompt(function (author) {
+        args.author = author;
+        scaffold();
+      });
+    }
+
+    args.version = args.version || args.v || '1.0.0';
+    args.directory = args.directory || args.d || args.project;
+
+    if (args.directory.charAt(0) !== '/') {
+      args.directory = path.join(process.cwd(), args.directory);
+    }
+
+    console.log('About to scaffold project "%s" into %s, continue? (y/n)', args.project, args.directory);
+    prompt(function (confirm) {
+      console.log('confirm: "%s"', confirm);
+      if (confirm && confirm.toLowerCase() !== 'y' ) {
+        console.log('Project scaffolding canceled. Exiting.');
+        process.exit();
+      }
+
+      if (!fs.existsSync(args.directory)) {
+        fs.mkdir(args.directory);
+      }
+
+      [
+        'assets',
+        'lib',
+        'services',
+        'streams',
+        'views',
+        '.dockerignore',
+        'gitignore',
+        'app.js',
+        'Dockerfile',
+        'LICENSE',
+        'sensitive.js'
+      ].forEach(function (filename) {
+        copy(
+          path.join(sourcedir, filename),
+          path.join(args.directory, filename === 'gitignore' ? '.gitignore' : filename)
+        );
+      });
+
+      [
+        'app.yaml',
+        'config.js',
+        'package.json',
+        'README.md'
+      ].forEach(function (filename) {
+        try {
+          fs.writeFileSync(
+            path.join(args.directory, filename),
+            fs.readFileSync(path.join(sourcedir, filename)).toString()
+              .replace(/#\{PROJECT_ID\}/g, args.project)
+              .replace(/#\{AUTHOR\}/g, args.author)
+              .replace(/#\{VERSION\}/g, args.version));
+        } catch (err) {
+          console.error(err.stack);
+          console.error('An error occurred: %s. Exiting.', err.message);
+          process.exit();
+        }
+      });
+
+      console.log('Project initialized.');
+    });
+  };
+
+if (args.h || args.help) {
+  console.log('USAGE: gcloud-node-scaffold [--FLAGS] [PROJECT_ID]');
+  console.log('\nwhere flags can be:');
+  console.log('\t-a, --author\t\tAuthor information.');
+  console.log('\t-d, --directory\t\tTarget directory for new project. Defaults to project ID.');
+  console.log('\t-h, --help\t\tPrint this message and exit.');
+  console.log('\t-p, --project\t\tID of the project in the Google Cloud Platform console.');
+  console.log('\t-v, --version\t\tOptional, project version string (e.g. "1.0.0").');
+  process.exit();
+}
+
+scaffold();

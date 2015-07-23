@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Uninstall scaffolding utility.
+
+echo 'Removing installed scaffold files...'
+rm -rf /usr/local/var/gcloud-node-scaffold

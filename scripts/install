@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Install scaffolding utility.
+
+./uninstall
+
+echo 'Copying scaffold files to /usr/local/var/gcloud-node-scaffold/...'
+cp -R ./src /usr/local/var/gcloud-node-scaffold

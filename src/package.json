@@ -1,0 +1,22 @@
+{
+  "name": "#{PROJECT_ID}",
+  "version": "#{VERSION}",
+  "description": "A short description of the project.",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "monitor": "nodemon app.js",
+    "deploy": "gcloud preview app deploy app.yaml"
+  },
+  "author": "#{AUTHOR}",
+  "license": "private",
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "cookie-session": "^1.1.0",
+    "express": "^4.12.0",
+    "gcloud": "git://github.com/GoogleCloudPlatform/gcloud-node",
+    "googleapis": "^1.1.5",
+    "compression": "^1.5.0",
+    "morgan": "^1.6.0"
+  }
+}

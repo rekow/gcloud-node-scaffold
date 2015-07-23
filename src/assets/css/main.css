@@ -1,0 +1,16 @@
+body {
+  background-color: #dedede;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1.landing {
+  font-size: 25em;
+}
+
+header {
+  text-align: left;
+}
+
+header ul {
+  float: right;
+}
