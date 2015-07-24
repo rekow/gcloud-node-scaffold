@@ -32,7 +32,7 @@ once scaffold is finished, `cd` to the project directory and run `npm install` t
 
 By default, sessions and OAuth2 are disabled pending configuration:
 
-- to enable OAuth set the correct values for [`clientId`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L6) and [`clientSecret`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L7) properties, then uncomment the [OAuth2 middleware init](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/app.js#L33)
+- to enable OAuth set the correct values for [`clientId`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L6) and [`clientSecret`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L7) properties, then uncomment the [OAuth2 middleware init](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/app.js#L44)
 - to enable sessions set the value of [`sessionSecret`](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/sensitive.js#L8), then uncomment the [session middleware init](https://github.com/davidrekow/gcloud-node-scaffold/tree/master/src/app.js#L33)
 
 ## scaffold

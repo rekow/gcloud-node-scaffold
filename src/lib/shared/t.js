@@ -56,7 +56,13 @@
 
   // Scrubs html output to insert safely.
   scrub = function (val) {
-    return new Option(val).innerHTML.replace(/'/g, '&apos;').replace(/"/g, '&quot;');
+    var cleaner;
+    if (Option) {
+      cleaner = new Option(val).innerHTML;
+    } else {
+      cleaner = val.toString().replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    return cleaner.replace(/'/g, '&apos;').replace(/"/g, '&quot;')
   };
 
   templates = {};

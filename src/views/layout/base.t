@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{#title}}serving from node on gcloud{{/title}}</title>
   <link type="text/css" href="/css/lib/pure/base.min.css" rel="stylesheet" />
-  <link type="text/css" href="/css/lib/pure/base.min.css" rel="stylesheet" />
   <link type="text/css" href="/css/lib/pure/grid.min.css" rel="stylesheet" />
   <link type="text/css" href="/css/main.css" rel="stylesheet" />
   {{#css_layout}}{{/css_layout}}

@@ -29,7 +29,7 @@ var path = require('path'),
     process.stdin.setEncoding('utf8');
     process.stdin.once('data', function (input) {
       process.stdin.pause();
-      cb(input.toString().replace(/^[\n\r\s\t]/g, '').replace(/[\n\r\s\t]$/g, ''));
+      cb(input.toString().replace(/^[\n\r\s\t]+/g, '').replace(/[\n\r\s\t]+$/g, ''));
     });
   },
 
